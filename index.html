@@ -24,39 +24,42 @@ body{
   min-height:100vh;min-height:100dvh;
   font-family:Inter,Arial,sans-serif;font-size:16px;line-height:1.5;color:var(--text);
   background:var(--bg);display:flex;justify-content:center;align-items:center;
-  padding:24px 16px;
-  padding:max(24px,env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) max(24px,env(safe-area-inset-bottom)) max(16px,env(safe-area-inset-left));
+  padding:9px;
+  padding:max(9px,env(safe-area-inset-top)) max(9px,env(safe-area-inset-right)) max(9px,env(safe-area-inset-bottom)) max(9px,env(safe-area-inset-left));
 }
 .card{
-  position:relative;isolation:isolate;width:min(100%,440px);
-  background:var(--panel);border:1px solid var(--hair);border-radius:22px;
+  position:relative;isolation:isolate;container-type:inline-size;width:min(100%,440px);
+  background:var(--panel);border:1px solid var(--hair);border-radius:20px;
   box-shadow:0 24px 64px rgba(0,0,0,.24);
 }
-.card::before{
-  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;border-radius:inherit;
-  background:
-    linear-gradient(135deg,transparent 0 29%,rgba(121,173,132,.065) 29% calc(29% + 1px),transparent calc(29% + 1px)),
-    linear-gradient(135deg,transparent 0 38%,rgba(121,173,132,.04) 38% calc(38% + 1px),transparent calc(38% + 1px)),
-    linear-gradient(90deg,transparent calc(100% - 30px),rgba(121,173,132,.05) calc(100% - 30px) calc(100% - 29px),transparent calc(100% - 29px));
+.technical-drawing{
+  position:absolute;inset:0;z-index:-1;width:100%;height:100%;
+  border-radius:inherit;overflow:hidden;pointer-events:none;
+  fill:none;stroke:var(--accent-soft);stroke-width:1;opacity:.2;
 }
-.content{padding:34px 28px 26px}
-.logo{display:block;width:100%;max-width:208px;height:auto;margin:0 auto}
+.technical-drawing .arcs{opacity:.65}
+.technical-drawing .nodes{fill:var(--panel);stroke-width:1.2}
+.content{padding:13.44cqw 6.6cqw 3.5cqw}
+.logo{display:block;width:60%;max-width:226px;height:auto;margin:0 auto}
 .eyebrow{
-  margin:26px 0 16px;text-align:center;color:var(--accent-soft);
-  font-size:10px;font-weight:600;letter-spacing:.2em;line-height:1.6;text-transform:uppercase;
+  margin:8.06cqw 0 5.91cqw;
+  text-align:center;color:var(--accent-soft);font-size:clamp(10px,2.69cqw,12px);font-weight:500;
+  letter-spacing:.2em;line-height:1.5;text-transform:uppercase;
 }
 .name{
-  text-align:center;font-family:"Playfair Display",Georgia,serif;font-weight:600;
-  font-size:clamp(34px,10.8vw,44px);line-height:1.12;letter-spacing:-.025em;
-  margin:0;text-wrap:balance;overflow-wrap:break-word;
+  max-inline-size:6.6em;margin:0 auto;text-align:center;
+  font-family:"Playfair Display",Georgia,serif;font-weight:600;
+  font-size:clamp(40px,13.4cqw,60px);line-height:1.04;letter-spacing:-.025em;
+  text-wrap:balance;overflow-wrap:break-word;
 }
-.role{text-align:center;color:var(--muted);font-size:15px;line-height:1.5;margin:12px 0 0}
-.line{height:1px;background:linear-gradient(90deg,transparent,var(--button-border),transparent);margin:26px 0}
-.buttons{display:grid;gap:11px}
+.role{text-align:center;color:var(--muted);font-size:clamp(16px,4.3cqw,19px);line-height:1.5;margin:2.15cqw 0 0}
+.line{height:1px;background:linear-gradient(90deg,transparent,var(--button-border),transparent);margin:2.42cqw 0 4.84cqw}
+.buttons{display:grid;gap:2.6cqw}
 .btn{
-  display:grid;grid-template-columns:20px minmax(0,1fr) 8px;align-items:center;gap:14px;
-  min-height:56px;padding:15px 17px;border-radius:10px;
-  font-size:14px;line-height:1.5;font-weight:500;text-decoration:none;
+  --icon-size:clamp(26px,6.82cqw,30px);
+  display:grid;grid-template-columns:var(--icon-size) minmax(0,1fr) 8px;align-items:center;gap:3.23cqw;
+  min-height:clamp(54px,14.52cqw,64px);padding:2.96cqw 4.3cqw;border-radius:2.7cqw;
+  font-size:clamp(14px,4.03cqw,18px);line-height:1.5;font-weight:500;text-decoration:none;
   color:var(--text);background:#0D1813;border:1px solid var(--button-border);
   -webkit-tap-highlight-color:rgba(121,173,132,.18);
   transition:background-color .18s,border-color .18s;
@@ -64,30 +67,37 @@ body{
 .btn span{min-width:0;overflow-wrap:break-word}
 .btn::after{
   content:"";width:6px;height:6px;justify-self:end;
-  border-top:1px solid currentColor;border-right:1px solid currentColor;transform:rotate(45deg);opacity:.65;
+  border-top:1px solid currentColor;border-right:1px solid currentColor;
+  transform:rotate(45deg);opacity:.55;
 }
 .btn:hover{background:#172A21;border-color:var(--accent-soft)}
 .btn:focus-visible{outline:3px solid var(--accent-soft);outline-offset:4px}
 .btn.primary{background:var(--accent);border-color:var(--accent);font-weight:600}
-.btn.primary:hover{background:#377C69;border-color:#79AD84}
-.btn svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.btn.primary:hover{background:#377C69;border-color:var(--accent-soft)}
+.btn svg{
+  width:var(--icon-size);height:var(--icon-size);color:var(--accent-soft);fill:none;stroke:currentColor;
+  stroke-width:1.55;stroke-linecap:round;stroke-linejoin:round;
+}
+.btn.primary svg{color:var(--text)}
 .notice{margin:16px 0 0;color:#E0A23B;font-size:12px;line-height:1.5;text-align:center}
 .notice:empty{display:none}
-.foot{margin-top:25px;padding-top:21px;border-top:1px solid var(--hair);text-align:center}
-.org-name{color:var(--text);font-size:12px;font-weight:500;letter-spacing:.035em;margin-bottom:8px}
-.axes{color:var(--accent-soft);font-size:10px;font-weight:500;line-height:1.9;letter-spacing:.14em;text-transform:uppercase;text-wrap:balance}
+.foot{margin-top:7.53cqw;padding-top:5.91cqw;border-top:1px solid var(--hair);text-align:center}
+.org-name{color:var(--text);font-size:clamp(14px,3.76cqw,17px);font-weight:500;letter-spacing:.035em;margin-bottom:1.08cqw}
+.axes{color:var(--accent-soft);font-size:clamp(11px,2.96cqw,13px);font-weight:500;line-height:1.6;letter-spacing:.12em;text-transform:uppercase;text-wrap:balance}
 @media (max-width:360px){
-  body{padding:16px 12px;padding-bottom:max(16px,env(safe-area-inset-bottom))}
-  .content{padding:28px 20px 23px}
-  .logo{max-width:190px}
-  .btn{gap:11px;padding:14px 13px;font-size:13px}
-  .axes{letter-spacing:.09em}
+  .btn{gap:10px;padding-inline:12px;font-size:14px}
+  .axes{font-size:10px;letter-spacing:.07em}
 }
 @media (prefers-reduced-motion:reduce){.btn{transition:none}}
 </style>
 </head>
 <body>
 <main class="card">
+  <svg class="technical-drawing" viewBox="0 0 400 700" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+    <g class="arcs"><circle cx="350" cy="180" r="212"/><circle cx="350" cy="180" r="170"/><path d="M-40 550a220 220 0 0 1 320 190M-50 510a270 270 0 0 1 390 225"/></g>
+    <path d="M-30 365 350-15M-20 485 440 25M28 78v552M371 45v630M-10 147h430M-10 580h430"/>
+    <g class="nodes"><rect x="24" y="143" width="8" height="8"/><rect x="367" y="143" width="8" height="8"/><rect x="24" y="576" width="8" height="8"/><rect x="367" y="576" width="8" height="8"/><rect x="275" y="62" width="6" height="6" transform="rotate(45 278 65)"/></g>
+  </svg>
   <div class="content">
     <header>
       <img class="logo" src="assets/mensura-logo.png" width="1084" height="260" alt="MENSURA Engenharia">
